@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid black; */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #b1cbbb;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    height: 100%;
+    width: 90%;
+}
+button,select {
+    background-color: #deeaee;
+    border: none;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+h2{
+    margin-top: 20px;
+}
+option{
+    border: 1px solid black;
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+li{
+    list-style: none;
+}
+form{
+    width: 100%;
+}
+.form-area{
+    width: 100%;
+}
+input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+.formButtons{
+    display: flex;
+    justify-content: space-between;
+}
+.unexpandedBookmark{
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    margin-top: 20px;   
+}
+.expandedBookmark{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+.bookmarkLIName{
+    width: 80%;
+    display: flex;
+}
+.bookmarkLIRating{
+    width: 20%;
+    display: flex;
+}
+.bookmark{
+    width: 100%;
+    margin-top: 20px;
+}
+.expandedDescription{
+    border-bottom: 1px solid black;
+}
+.expandedURL{
+    height: 100%;
+    border-bottom: 1px solid black;
+}
+a{
+    height: 100%;
+    color: black;
+}
