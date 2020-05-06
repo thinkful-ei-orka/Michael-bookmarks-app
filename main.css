@@ -13,7 +13,7 @@ body{
 }
 .wrapper{
     height: 100%;
-    width: 80%;
+    width: 70%;
 }
 button,select {
     background-color: #deeaee;
@@ -88,3 +88,23 @@ a{
     height: 100%;
     color: black;
 }
+@media screen and (min-width: 480px) {
+    body {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 2em;
+    }
+    .bookmarkLIName{
+        width: 70%;
+        display: flex;
+    }
+    .bookmarkLIRating{
+        width: 30%;
+        display: flex;
+        text-align: right;
+    }
+    #Rating-list{
+        margin-right: 5%;
+    }
+  }
