@@ -4,7 +4,6 @@ function getItems () {
   return fetch(BASE_URL);
 };
 function createItem(bookmark) {
-  console.log(bookmark);
   return apiCall(`${BASE_URL}`, {
     method: 'POST',
     headers: {

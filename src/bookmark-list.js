@@ -158,19 +158,7 @@ function render() {
           </div>`;
   };
   function filterByRating(bookmarks) {
-    let filteredBookmarkArray = [];
-    bookmarks.forEach(item => {
-      if( store.filter == item.rating) {
-        let tempObj = { 
-                        'id'    : item.id,
-                        'title' : item.title,
-                        'url'   : item.url,
-                        'desc'  : item.desc,
-                        'rating': item.rating
-                      };
-        filteredBookmarkArray.push(tempObj);
-      };
-    });
+    let filteredBookmarkArray = bookmarks
     return filteredBookmarkArray;
   };
   // Start of Render function-------------------------------------------
@@ -179,11 +167,10 @@ function render() {
   
   if(store.adding) {
     html += generateAddForm();
-  }
-  
+  }  
   if (store.filter != 0) {
     $('.button-area').html(`${generateButtons()}`);
-    html += generateBookmarks(filterByRating(bookmarks));
+    html += generateBookmarks(bookmarks.filter(bookmark => bookmark.rating >= store.filter));
   }else {
     $('.button-area').html(`${generateButtons()}`);
     html += generateBookmarks(bookmarks);  

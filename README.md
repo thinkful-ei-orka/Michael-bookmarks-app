@@ -2,7 +2,7 @@
 
 ### This app will keep all of your bookmarks in one place.
 
-### Link to live page: https://thinkful-ei-orka.github.io/Michael-bookmarks-app/
+### Link to live page: 
 
 ## As a user: 
 
