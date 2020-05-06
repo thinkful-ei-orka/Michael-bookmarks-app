@@ -101,13 +101,13 @@ function render() {
   return `<div class="buttons">
             <button type="button" class="addBookmark">Add</button>
               <select id="Rating-list">
-                <option value = ' '>Filter By</option>
-                <option value = '0'>All</option>
-                <option value = '1'>1</option>
-                <option value = '2'>2</option>
-                <option value = '3'>3</option>
+                <option value = ' '>Minimum Rating</option>
+                <option value = '0'>All</option> 
+                <option value = '5'>5</option>
                 <option value = '4'>4</option>
-                <option value = '5'>5</option>  
+                <option value = '3'>3</option>
+                <option value = '2'>2</option>
+                <option value = '1'>1</option> 
               </select>
           </div>`;
   };
