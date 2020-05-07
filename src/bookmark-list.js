@@ -59,12 +59,9 @@ function handleCloseError() {
   });
 };
 function handleBookmarkClick() {
-  function getItemIdFromElement(item) {
-    return $(item).closest('li').data('item-id');
-  };
-  $('main').on('click', 'li', event => {
-    const id = getItemIdFromElement(event.currentTarget);
-    store.toggleExpanded(id);
+  $('main').on('click','.unexpandedBookmarkButton', event => {
+    console.log('unexpandedBookmarkButton clicked');
+    store.toggleExpanded(event.currentTarget.id);
     render();
   });
 };
@@ -112,23 +109,29 @@ function render() {
           </div>`;
   };
   function generateExpandedBookmark(item) {
-      return `<form class='bookmark'>
-                <div class = 'unexpandedBookmark'>
-                  <li class = 'bookmarkLIName' data-item-id=${item.id}>${item.title}</li>
-                  <li class = 'bookmarkLIRating' >Rating: ${item.rating}</li>
-                </div>
-                <div class = 'expandedBookmark'>
-                  <li class = 'expandedURL' data-item-id=${item.id}><a href='${item.url}'>Visit ${item.title}</a></li>
-                  <li class = 'expandedDescription' data-item-id=${item.id}><h3>Description</h3><br>${item.desc}</li>
-                  <button type="button" class="delete-button" data-item-id=${item.id}>Delete</button>
-                </div>
-              </form>`;
+      return `  <div class = 'bookmarkDiv'>
+                  <div class = 'bookmarkDiv'>
+                    <div class = 'unexpandedBookmark'>
+                      <button class = 'unexpandedBookmarkButton' id = ${item.id}>${item.title}</button>
+                      <div class = 'unexpandedBookmarkRating'>Rating: ${item.rating}</div>
+                    </div>
+                  </div>
+                  <div class = 'expandedBookmark'>
+                    <ul class = 'expandedBookmarkList'>
+                      <li class = 'expandedURL' data-item-id=${item.id}><a href='${item.url}'>Visit ${item.title}</a></li>
+                      <li class = 'expandedDescription' data-item-id=${item.id}>${item.desc}</li>
+                      <li><button type="button" class="delete-button" data-item-id=${item.id}>Delete</button></li>
+                      </ul>
+                  </div>
+                </div>`;
   };
   function generateBookmark(item) {
-  return `<div class = 'unexpandedBookmark'>
-            <li class = 'bookmarkLIName' data-item-id=${item.id}>${item.title}</li>
-            <li class = 'bookmarkLIRating' >Rating: ${item.rating}</li>
-          </div>`;
+  return `  <div class = 'bookmarkDiv'>
+              <div class = 'unexpandedBookmark'>
+                <button class = 'unexpandedBookmarkButton' id = ${item.id}>${item.title}</button>
+                <div class = 'unexpandedBookmarkRating'>Rating: ${item.rating}</div>
+              </div>
+            </div>`;
   };
   function generateBookmarks(bookmarkList) {
     let html = '';
@@ -145,11 +148,14 @@ function render() {
   function generateAddForm() {
   return `<div class="form-area">
             <form id="bookmark-form">
-              <label for="title"><h2>Add a New Bookmark</h2></label><br>
-              <input type="text" name="url" class="addField" placeholder="http://bookmark.com" required><br>
-              <input type="text" name="title" class="addField" placeholder="Title" required><br>
-              <input type="number" name="rating" class="addField" min="1" max="5" placeholder="Select Rating" required><br>
-              <input type="text" name="desc" class="addField" id="description-input" placeholder="Add a description " required>
+              <label for="url">Enter URL:</label><br>
+              <input type="text" id ="url" class="addField" placeholder="http://bookmark.com" required><br>
+              <label for="title">Enter Title:</label><br>
+              <input type="text" id ="title" class="addField" placeholder="Title" required><br>
+              <label for="rating">Enter Rating(1-5):</label><br>
+              <input type="number" id ="rating" class="addField" min="1" max="5" placeholder="Select Rating" required><br>
+              <label for="desc">Enter Description:</label><br>
+              <input type="text" id ="desc" class="addField" id="description-input" placeholder="Add a description " required>
               <div class="formButtons">
                 <button type="button" class="cancel-button">Cancel</button>
                 <button type="submit"class="add-item-button">Create</button>

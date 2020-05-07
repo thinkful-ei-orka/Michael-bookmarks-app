@@ -1,110 +1,191 @@
 *{
+    text-align: center;
+    /* border: 1px solid black; */
     padding: 0;
     margin: 0;
-    /* border: 1px solid black; */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    background-color: #b1cbbb;
+    background-color: #80ced6;
 }
 body{
     width: 100%;
     height: 100%;
 }
 .wrapper{
-    height: 100%;
-    width: 70%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
-button,select {
-    background-color: #deeaee;
+.buttons{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bookmarkDiv{
+    margin-top: 20px;
+}
+.bookmarkDiv .unexpandedBookmark{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+.expandedBookmark{
+    border: 1px solid black;
+}
+li{
+    padding: 10px;
+}
+.bookmarkDiv .unexpandedBookmarkButton{
+    width: 80%;
     border: none;
-    padding: 7px 15px;
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+}
+input{
+    width: 90%;
+    border: 2px solid black;
+}
+.addBookmark, .cancel-button, .add-item-button, #Rating-list, .delete-button, a{
+    background-color: #618685;
+    border: none;
+    color: white;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
-h2{
-    margin-top: 20px;
-}
-option{
-    border: 1px solid black;
-}
-.buttons{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-li{
-    list-style: none;
-}
-form{
-    width: 100%;
-}
-.form-area{
-    width: 100%;
-}
-input{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-.formButtons{
-    display: flex;
-    justify-content: space-between;
-}
-.unexpandedBookmark{
-    width: 100%;
-    height: 100%;
-    display: flex; 
-    margin-top: 20px;   
-}
-.expandedBookmark{
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-}
-.bookmarkLIName{
-    width: 80%;
-    display: flex;
-}
-.bookmarkLIRating{
-    width: 20%;
-    display: flex;
-}
-.bookmark{
-    width: 100%;
-    margin-top: 20px;
-}
-.expandedDescription{
-    border-bottom: 1px solid black;
-}
-.expandedURL{
-    height: 100%;
-    border-bottom: 1px solid black;
-}
-a{
-    height: 100%;
-    color: black;
-}
-@media screen and (min-width: 480px) {
-    body {
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 2em;
+
+@media screen and (min-width: 768px) and (max-width: 1199px){
+    *{
+        text-align: center;
+        /* border: 1px solid black; */
+        padding: 0;
+        margin: 0;
+        background-color: #80ced6;
     }
-    .bookmarkLIName{
-        width: 70%;
+    body{
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper{
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .buttons{
+        width: 80%;
         display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .bookmarkLIRating{
-        width: 30%;
+    .bookmarkDiv{
+        margin-top: 20px;
+    }
+    .bookmarkDiv .unexpandedBookmark{
+        width: 100%;
         display: flex;
-        text-align: right;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
     }
-    #Rating-list{
-        margin-right: 5%;
+    .expandedBookmark{
+        border: 1px solid black;
     }
-  }
+    li{
+        padding: 10px;
+    }
+    .bookmarkDiv .unexpandedBookmarkButton{
+        width: 80%;
+        border: none;
+        text-align: center;
+    }
+    ul{
+        list-style-type: none;
+    }
+    input{
+        width: 90%;
+        border: 2px solid black;
+    }
+    .addBookmark, .cancel-button, .add-item-button,#Rating-list, .delete-button, a{
+        background-color: #618685;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    *{
+        text-align: center;
+        /* border: 1px solid black; */
+        padding: 0;
+        margin: 0;
+        background-color: #80ced6;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper{
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .buttons{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bookmarkDiv{
+        margin-top: 20px;
+    }
+    .bookmarkDiv .unexpandedBookmark{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+    }
+    .expandedBookmark{
+        border: 1px solid black;
+    }
+    li{
+        padding: 10px;
+    }
+    .bookmarkDiv .unexpandedBookmarkButton{
+        width: 80%;
+        border: none;
+        text-align: center;
+    }
+    ul{
+        list-style-type: none;
+    }
+    input{
+        width: 90%;
+        border: 2px solid black;
+    }
+    .addBookmark, .cancel-button, .add-item-button,#Rating-list, .delete-button, a{
+        background-color: #618685;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+}
