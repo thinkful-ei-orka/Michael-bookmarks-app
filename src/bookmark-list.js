@@ -7,6 +7,21 @@ function toggleStoreAdding() {
 function clearBookmarkForm () {
   $('.addField').val('');
 };
+function generateError(message) {
+  //generates HTML string for error message displayed in the DOM
+    return `<section class="error-message">${message}<br>Please check entries and try again.</section>`; 
+};
+function renderError() {
+  //Checks to see if the store has an error.  If so, then render html on the page.
+    if (store.error) {
+      const el = generateError(store.error);
+      $('.error-container').html(el);
+    } 
+    else {
+      $('.error-container').empty();
+    }
+    console.log('Error:  ' + store.error);
+};
 //Event Handlers--------------------------------------------------------
 function handleFilterSelector() {
   $('.button-area').change( function() {
@@ -42,6 +57,7 @@ function handleNewItemSubmit () {
     api.createItem(newItem)
       .then(item => {
         store.addBookmark(item);
+        handleCloseError();
         clearBookmarkForm();
         toggleStoreAdding();
         render();
@@ -53,10 +69,8 @@ function handleNewItemSubmit () {
   });
 };
 function handleCloseError() {
-  $('.error-container').on('click','.error-message', () => {
     store.setError(null);
     renderError();
-  });
 };
 function handleBookmarkClick() {
   $('main').on('click','.unexpandedBookmarkButton', event => {
@@ -82,7 +96,7 @@ function handleDeleteItemClicked () {
       });
   });
 };
-//EXPORT----------------------------------------------------------------
+//EXPORT-----------------------------------------------------------------
 function bindEventListeners () {
   handleNewItemSubmit();
   handleAddBookmarkButton();
@@ -93,7 +107,7 @@ function bindEventListeners () {
   handleCloseError();
 };
 function render() {
-  //Functions used in render function-----------------------------------
+//Functions used in render function--------------------------------------
   function generateButtons() {
   return `<div class="buttons">
             <button type="button" class="addBookmark">Add</button>
@@ -109,7 +123,8 @@ function render() {
           </div>`;
   };
   function generateExpandedBookmark(item) {
-      return `  <div class = 'bookmarkDiv'>
+      return `<li>  
+                <div class = 'bookmarkDiv'>
                   <div class = 'bookmarkDiv'>
                     <div class = 'unexpandedBookmark'>
                       <button class = 'unexpandedBookmarkButton' id = ${item.id}>${item.title}</button>
@@ -123,18 +138,21 @@ function render() {
                       <li><button type="button" class="delete-button" data-item-id=${item.id}>Delete</button></li>
                       </ul>
                   </div>
-                </div>`;
+                </div>
+              </li>  `;
   };
   function generateBookmark(item) {
-  return `  <div class = 'bookmarkDiv'>
+  return `<li>  
+            <div class = 'bookmarkDiv'>
               <div class = 'unexpandedBookmark'>
                 <button class = 'unexpandedBookmarkButton' id = ${item.id}>${item.title}</button>
                 <div class = 'unexpandedBookmarkRating'>Rating: ${item.rating}</div>
               </div>
-            </div>`;
+            </div>
+          </li>  `;
   };
   function generateBookmarks(bookmarkList) {
-    let html = '';
+    let html = '<ul>';
     bookmarkList.forEach((item) => {
       if (item.expanded) {
         html += generateExpandedBookmark(item);
@@ -143,29 +161,26 @@ function render() {
         html += generateBookmark(item);
       }
     });
+    html += '</ul>'
     return html;
   };
   function generateAddForm() {
   return `<div class="form-area">
             <form id="bookmark-form">
               <label for="url">Enter URL:</label><br>
-              <input type="text" id ="url" class="addField" placeholder="http://bookmark.com" required><br>
+              <input type="text" id = 'url' name ="url" class="addField" placeholder="http://bookmark.com" required><br>
               <label for="title">Enter Title:</label><br>
-              <input type="text" id ="title" class="addField" placeholder="Title" required><br>
+              <input type="text" id = 'title' name ="title" class="addField" placeholder="Title" required><br>
               <label for="rating">Enter Rating(1-5):</label><br>
-              <input type="number" id ="rating" class="addField" min="1" max="5" placeholder="Select Rating" required><br>
+              <input type="number" id = 'rating' name ="rating" class="addField" min="1" max="5" placeholder="Select Rating" required><br>
               <label for="desc">Enter Description:</label><br>
-              <input type="text" id ="desc" class="addField" id="description-input" placeholder="Add a description " required>
+              <input type="text" id = 'desc' name ="desc" class="addField" id="description-input" placeholder="Add a description " required>
               <div class="formButtons">
                 <button type="button" class="cancel-button">Cancel</button>
                 <button type="submit"class="add-item-button">Create</button>
               </div>
             </form>
           </div>`;
-  };
-  function filterByRating(bookmarks) {
-    let filteredBookmarkArray = bookmarks
-    return filteredBookmarkArray;
   };
   // Start of Render function-------------------------------------------
   let bookmarks = [...store.bookmarks];
